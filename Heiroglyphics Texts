@@ -1,0 +1,95 @@
+!pip install reportlab
+
+
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+
+# Define an extensive mapping of English characters to advanced hieroglyphics
+char_to_advanced_hieroglyphics = {
+    'A': '𓀀',
+    'B': '𓂦',
+    'C': '𓂧',
+    'D': '𓂨',
+    'E': '𓂩',
+    'F': '𓂪',
+    'G': '𓂫',
+    'H': '𓂬',
+    'I': '𓂭',
+    'J': '𓂮',
+    'K': '𓂯',
+    'L': '𓂰',
+    'M': '𓂱',
+    'N': '𓂲',
+    'O': '𓂳',
+    'P': '𓂴',
+    'Q': '𓂵',
+    'R': '𓂶',
+    'S': '𓂷',
+    'T': '𓂸',
+    'U': '𓂹',
+    'V': '𓂺',
+    'W': '𓂻',
+    'X': '𓂼',
+    'Y': '𓂽',
+    'Z': '𓂾',
+    '0': '𓁀',
+    '1': '𓁁',
+    '2': '𓁂',
+    '3': '𓁃',
+    '4': '𓁄',
+    '5': '𓁅',
+    '6': '𓁆',
+    '7': '𓁇',
+    '8': '𓁈',
+    '9': '𓁉',
+    ' ': ' ',  # Space
+    '!': '𓁊',
+    '.': '𓁋',
+    ',': '𓁌',
+    '?': '𓁍',
+    '@': '𓁎',
+    '#': '𓁏',
+    '$': '𓁐',
+    '%': '𓁑',
+    '&': '𓁒',
+    '*': '𓁓',
+    '(': '𓁔',
+    ')': '𓁕',
+    '-': '𓁖',
+    '_': '𓁗',
+    '+': '𓁘',
+    '=': '𓁙',
+    '<': '𓁚',
+    '>': '𓁛',
+    '/': '𓁜',
+    '\\': '𓁝',
+    ':': '𓁞',
+    ';': '𓁟',
+    '[': '𓁠',
+    ']': '𓁡',
+    '{': '𓁢',
+    '}': '𓁣',
+    '|': '𓁤',
+    '`': '𓁥',
+    '~': '𓁦',
+    "'": '𓁧',
+    '"': '𓁨',
+}
+
+# Get user input for a sentence
+sentence = input("Enter a sentence: ")
+
+# Convert the sentence to advanced ancient Egyptian-style hieroglyphics
+hieroglyphics = ''.join(char_to_advanced_hieroglyphics.get(char.upper(), char) for char in sentence)
+
+# Display the sentence in advanced hieroglyphics
+print(f"Sentence in Advanced Ancient Egyptian-style Hieroglyphics:\n{hieroglyphics}")
+
+# Create a PDF file and add hieroglyphics
+c = canvas.Canvas("hieroglyphics.pdf", pagesize=letter)
+c.setFont("Helvetica", 12)
+c.drawString(100, 750, "Hieroglyphics:")
+c.setFont("Helvetica", 10)
+c.drawString(100, 730, hieroglyphics)
+c.showPage()
+c.save()
